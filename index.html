@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Vue.js Weather App</title>
+		<meta charset="utf-8">
+		<link href="style.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div id ="title" class="gray shadowed stuff-box">
+			Vue.JS Weather App
+		</div>
+		<div id="position" class="blue shadowed stuff-box">
+			<h1>Your Location</h1>
+			<p> {{ position }} </p>
+		</div>
+		<div id="current" class="yellow shadowed stuff-box">
+			<h1>Current Conditions</h1>
+			<p>Current weather conditions @ {{ timestamp }}</p>
+			<ul>
+				<li>Currently {{ current }}F</li>
+				<li>High {{ high }}F</li>
+				<li>Low {{ low }}F</li>
+				<li>{{ clouds }}</li>
+				<li>{{ humidity }}% humidity</li>
+				<li>{{ pressure }} hPa pressure</li> 
+			</ul>
+		</div>
+		<div id="forecast" class="blue shadowed stuff-box" >
+			<h1>5 day 3-hour forecast</h1>
+			<p>  {{ unlikely  }} unlikely {{ neutral }} neutral {{ likely }} likely</p>
+			<div id="target" v-for="guess in guesses" v-on:click="toggle" class="black shadowed stuff-box">
+			<h1> Conditions for {{ guess.dateTime }} </h1>
+			<ul>
+				<li> Temperature {{ guess.temperature }}F</li>
+				<li>{{ guess.clouds }}</li>
+				<li>{{ guess.humidity }} humidity</li>
+				<li>{{ guess.pressure }} hPa</li>
+			</ul>
+		</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src='script.js'></script>
+	</body>
+</html>
